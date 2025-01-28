@@ -1,1 +1,2 @@
-console.log("JS Init");
+(()=>{"use strict";console.log("JS Init")})();
+//# sourceMappingURL=main.bundle.js.map

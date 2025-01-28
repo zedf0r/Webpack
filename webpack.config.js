@@ -1,14 +1,25 @@
-const { clear } = require('console')
-const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPluign = require('html-webpack-plugin');
+const path = require('path');
+const { watch } = require('fs');
 
 module.exports = {
     mode: 'production',
+    watch: true,
     entry: './src/js/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
         clean: true,
+        assetModuleFilename: '[path][name][ext]'
     },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        port: 9000
+    },
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -20,7 +31,33 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            }
+            },
+            {
+                test: /\.html$/i,
+                loader: "html-loader"
+            },
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"]
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+            },
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPluign({
+            template: './src/index.html',
+            filename: 'index.html',
+            inject: 'body',
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'main.css'
+        })
+    ],
 }
