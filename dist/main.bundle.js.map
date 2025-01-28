@@ -1,0 +1,1 @@
+{"version":3,"file":"main.bundle.js","mappings":"mBAEAA,QAAQC,IAAI,U","sources":["webpack://webpack/./src/js/index.js"],"sourcesContent":["import html from \".././index.html\"\r\nimport css from \"../css/main.css\"\r\nconsole.log('JS Init')"],"names":["console","log"],"sourceRoot":""}

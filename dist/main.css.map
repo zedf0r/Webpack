@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":"AAAA;IACI,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,yBAAyB;AAC7B,C","sources":["webpack://webpack/./src/css/main.css"],"sourcesContent":[".box {\r\n    width: 100px;\r\n    height: 100px;\r\n    border-radius: 12px;\r\n    background-color: #a39d9d;\r\n}"],"names":[],"sourceRoot":""}
